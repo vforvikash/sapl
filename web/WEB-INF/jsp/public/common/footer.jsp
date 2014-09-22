@@ -1,0 +1,1 @@
+<p>This is footer - public</p>

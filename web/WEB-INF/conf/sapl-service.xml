@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+<bean id="accountServiceTarget" class="com.sapl.services.userimpl.AccountServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="accountService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.AccountService" />
+	<property name="target" ref="accountServiceTarget" />
+</bean>
+
+<bean id="userInfoServiceTarget" class="com.sapl.services.userimpl.UserInfoServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="userInfoService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.UserInfoService" />
+	<property name="target" ref="userInfoServiceTarget" />
+</bean>
+
+<bean id="groupSizeServiceTarget" class="com.sapl.services.userimpl.GroupSizeServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="groupSizeService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.GroupSizeService" />
+	<property name="target" ref="groupSizeServiceTarget" />
+</bean>
+
+<bean id="colourServiceTarget" class="com.sapl.services.userimpl.ColourServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="colourService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.ColourService" />
+	<property name="target" ref="colourServiceTarget" />
+</bean>
+<bean id="groundServiceTarget" class="com.sapl.services.userimpl.GroundServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="groundService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.GroundService" />
+	<property name="target" ref="groundServiceTarget" />
+</bean>
+<bean id="groupServiceTarget" class="com.sapl.services.userimpl.GroupServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="groupService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.GroupService" />
+	<property name="target" ref="groupServiceTarget" />
+</bean>
+<bean id="loomServiceTarget" class="com.sapl.services.userimpl.LoomServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="loomService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.LoomService" />
+	<property name="target" ref="loomServiceTarget" />
+</bean>
+<bean id="productTypeServiceTarget" class="com.sapl.services.userimpl.ProductTypeServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="productTypeService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.ProductTypeService" />
+	<property name="target" ref="productTypeServiceTarget" />
+</bean>
+<bean id="textureServiceTarget" class="com.sapl.services.userimpl.TextureServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="textureService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.TextureService" />
+	<property name="target" ref="textureServiceTarget" />
+</bean>
+<bean id="typeServiceTarget" class="com.sapl.services.userimpl.TypeServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="typeService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.TypeService" />
+	<property name="target" ref="typeServiceTarget" />
+</bean>
+<bean id="productServiceTarget" class="com.sapl.services.userimpl.ProductServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="productService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.ProductService" />
+	<property name="target" ref="productServiceTarget" />
+</bean>
+
+<bean id="customerServiceTarget" class="com.sapl.services.userimpl.CustomerServiceImpl">
+	<constructor-arg>
+		<ref bean="daoFactory"/>
+	</constructor-arg>
+</bean>
+<bean id="customerService" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces" value="com.sapl.services.user.CustomerService" />
+	<property name="target" ref="customerServiceTarget" />
+</bean>
+
+<!-- Misc -->
+<bean id="logBeanNameProxyCreatorService" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+	<property name="beanNames">
+		<value>*ServiceTarget</value>
+	</property>
+	<property name="interceptorNames">
+		<list>
+			<value>methodBeforeLogAdvisor</value>
+			<value>methodAfterLogAdvisor</value>
+			<value>throwsLogAdvisor</value>
+		</list>
+	</property>
+</bean>
+</beans>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd" >
+<beans>
+
+      <bean id="daoAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+            <property name="userDetailsService">
+                  <ref local="jdbcDaoImpl" />
+            </property>
+      </bean>
+
+<!-- 			select USER_LOGIN as username,USERRL_USERPERSONROLE as authority from USER_TBL,USERROLE_TBL where USER_TBL.USER_USERPERSONID=USERROLE_TBL.USERRL_USERPERSONID and USER_TBL.USER_LOGIN = ? -->
+      <bean id="jdbcDaoImpl" class="org.acegisecurity.userdetails.jdbc.JdbcDaoImpl">
+      	    <property name="dataSource">
+      	    	<ref bean="dataSource" />
+      	    </property>
+      	    <property name="usersByUsernameQuery">
+				<value>
+					select USER_LOGIN as username,USER_PASSWORD,1 as ENABLED from USER_TBL where USER_LOGIN=?
+				</value>
+			</property>
+			<property name="authoritiesByUsernameQuery">
+				<value>
+					select USER_LOGIN as username, USER_ROLE as authority from USER_TBL, USERROLE_TBL where USER_TBL.USER_ID=USERROLE_TBL.USER_ID and USER_TBL.USER_LOGIN = ?
+				</value>
+			</property>
+      </bean>
+
+      <bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+            <property name="providers">
+                  <list>
+                        <ref bean="daoAuthenticationProvider" />
+                        <!-- <ref bean="rememberMeAuthenticationProvider"/> -->
+                  </list>
+            </property>
+      </bean>
+
+
+
+   <bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter">
+      <property name="authenticationManager" ref="authenticationManager"/>
+      <property name="authenticationFailureUrl"><value>/index.jsp?login_error=1</value></property>
+      <property name="defaultTargetUrl"><value>/</value></property>
+      <property name="filterProcessesUrl"><value>/j_acegi_security_check</value></property>
+      <property name="rememberMeServices" ref="rememberMeServices"/>
+   </bean>
+
+  <bean id="roleVoter" class="org.acegisecurity.vote.RoleVoter" />
+
+  <bean id="accessDecisionManager" class="org.acegisecurity.vote.AffirmativeBased">
+     <property name="allowIfAllAbstainDecisions"><value>false</value></property>
+      <property name="decisionVoters">
+         <list>
+            <ref bean="roleVoter"/>
+         </list>
+      </property>
+   </bean>
+
+
+      <!-- <bean id="securityEnforcementFilter" class="org.acegisecurity.intercept.web.SecurityEnforcementFilter">
+            <property name="filterSecurityInterceptor">
+                  <ref bean="filterInvocationInterceptor" />
+            </property>
+            <property name="authenticationEntryPoint">
+                  <ref bean="authenticationEntryPoint" />
+            </property>
+      </bean>
+      <bean id="customAuthenticationProcessingFilter" class="com.sapl.webui.interceptor.CustomAuthenticationProcessingFilter">
+	          <property name="authenticationManager" ref="authenticationManager"/>
+		      <property name="authenticationFailureUrl"><value>/index.jsp?login_error=1</value></property>
+		      <property name="defaultTargetUrl"><value>/</value></property>
+		      <property name="filterProcessesUrl"><value>/j_acegi_security_check</value></property>
+		      <property name="rememberMeServices" ref="rememberMeServices"/>
+      </bean>
+
+      -->
+
+      <bean id="httpSessionIntegrationFilter" class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
+            <property name="context">
+                  <value>
+                        org.acegisecurity.context.SecurityContextImpl
+                  </value>
+            </property>
+      </bean>
+
+      <bean id="authenticationEntryPoint" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
+            <property name="loginFormUrl">
+                  <value>/indexGBase.jsp</value>
+            </property>
+            <property name="forceHttps"><value>false</value></property>
+      </bean>
+
+
+      <bean id="filterInvocationInterceptor" class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
+            <property name="authenticationManager">
+                  <ref bean="authenticationManager" />
+            </property>
+            <property name="accessDecisionManager">
+                  <ref bean="accessDecisionManager" />
+            </property>
+            <property name="objectDefinitionSource">
+                  <value>
+                        CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+                        PATTERN_TYPE_APACHE_ANT
+                        /secure/admin/**=ROLE_ADMIN
+                        /secure/common/**=ROLE_ADMIN
+                  </value>
+            </property>
+      </bean>
+
+     <bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
+        <property name="authenticationEntryPoint" ref="authenticationEntryPoint"/>
+    </bean>
+
+
+      <bean id="filterChainProxy" class="org.acegisecurity.util.FilterChainProxy">
+            <property name="filterInvocationDefinitionSource">
+                  <value>
+                        CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+                        PATTERN_TYPE_APACHE_ANT
+                        /**=httpSessionIntegrationFilter,authenticationProcessingFilter,exceptionTranslationFilter,filterInvocationInterceptor,rememberMeProcessingFilter
+                  </value>
+            </property>
+      </bean>
+
+          <!-- ===================== REMEMBER ME ==================== -->
+	    <bean id="rememberMeProcessingFilter" class="org.acegisecurity.ui.rememberme.RememberMeProcessingFilter">
+	        <property name="authenticationManager" ref="authenticationManager"/>
+	        <property name="rememberMeServices" ref="rememberMeServices"/>
+	    </bean>
+
+	    <bean id="rememberMeServices" class="org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices">
+	        <property name="userDetailsService" ref="jdbcDaoImpl"/>
+	        <property name="key" value="saplRocks"/>
+	        <property name="parameter" value="rememberMe"/>
+	        <property name="tokenValiditySeconds"><value>36000</value></property>
+	    </bean>
+
+		<!--
+	    <bean id="rememberMeAuthenticationProvider" class="org.acegisecurity.providers.rememberme.RememberMeAuthenticationProvider">
+	        <property name="key" value="saplRocks"/>
+	    </bean>
+		 -->
+</beans>

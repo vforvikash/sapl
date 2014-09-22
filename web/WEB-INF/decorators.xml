@@ -1,0 +1,28 @@
+<decorators defaultdir="/WEB-INF/jsp/decorators">
+ 	<decorator name="main" page="main.jsp">
+          <pattern>/public/*</pattern>
+    </decorator>
+
+    <decorator name="main" page="main.jsp">
+          <pattern>/secure/*Logout*</pattern>
+    </decorator>
+
+    <decorator name="adminMain" page="adminMain.jsp">
+          <pattern>/secure/admin/*</pattern>
+          <pattern>/secure/sample/*</pattern>
+          <pattern>/secure/groupSize/*</pattern>
+	 	  <pattern>/secure/colour/*</pattern>
+	 	  <pattern>/secure/ground/*</pattern>
+	 	  <pattern>/secure/group/*</pattern>
+	 	  <pattern>/secure/loom/*</pattern>
+	 	  <pattern>/secure/productType/*</pattern>
+	 	  <pattern>/secure/texture/*</pattern>
+	 	  <pattern>/secure/type/*</pattern>
+	 	  <pattern>/secure/product/*</pattern>
+	 	  <pattern>/secure/customer/*</pattern>
+    </decorator>
+
+    <excludes>
+    	<pattern>/dwr/*</pattern>
+    </excludes>
+</decorators>

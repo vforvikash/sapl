@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>thakur1836</value>
+		</property>
+		<property name="driverClassName">
+			<!-- <value>net.sourceforge.jtds.jdbc.Driver</value>  microsoft
+				org.gjt.mm.mysql.Driver - mysql-->
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<!-- <value>jdbc:jtds:sqlserver://localhost:3306/TEST_DB</value> -->
+			<value>jdbc:mysql://localhost:3306/SAPL_DB</value>
+		</property>
+	</bean>
+
+	<!-- hibernateTemplate, sessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource"/>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.use_outer_join">true</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/sapl/db/entity/User.hbm.xml</value>
+				<value>com/sapl/db/entity/UserRole.hbm.xml</value>
+				<value>com/sapl/db/entity/Sample.hbm.xml</value>
+				<value>com/sapl/db/entity/Size.hbm.xml</value>
+				<value>com/sapl/db/entity/GroupSize.hbm.xml</value>
+				<value>com/sapl/db/entity/Colour.hbm.xml</value>
+				<value>com/sapl/db/entity/Ground.hbm.xml</value>
+				<value>com/sapl/db/entity/Group.hbm.xml</value>
+				<value>com/sapl/db/entity/Loom.hbm.xml</value>
+				<value>com/sapl/db/entity/ProductType.hbm.xml</value>
+				<value>com/sapl/db/entity/Texture.hbm.xml</value>
+				<value>com/sapl/db/entity/Type.hbm.xml</value>
+				<value>com/sapl/db/entity/Product.hbm.xml</value>
+				<value>com/sapl/db/entity/Customer.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+
+	<bean id="daoFactory" class="com.sapl.db.dao.DaoFactory">
+		<constructor-arg>
+			<ref bean="hibernateTemplate"/>
+		</constructor-arg>
+	</bean>
+
+	<!-- Transaction declaration -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory"><ref bean="sessionFactory"/></property>
+	</bean>
+
+	<bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager"><ref bean="transactionManager"/></property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="create*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED</prop>
+				<prop key="edit*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionAdvisor" class="org.springframework.transaction.interceptor.TransactionAttributeSourceAdvisor">
+		<constructor-arg><ref bean="transactionInterceptor"/></constructor-arg>
+	</bean>
+
+	<bean id="transactionWeaving" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list><value>transactionAdvisor</value></list>
+		</property>
+		<property name="beanNames">
+			<value>*ServiceTarget</value>
+		</property>
+	</bean>
+	
+	
+	<!-- Advices -->
+	<bean id="methodBeforeLogAdvice" class="com.sapl.webui.aop.MethodBeforeLogAdvice"/>
+	<bean id="methodAfterLogAdvice" class="com.sapl.webui.aop.MethodAfterLogAdvice"/>
+	<bean id="throwsLogAdvice" class="com.sapl.webui.aop.ThrowsLogAdvice"/>
+	<!-- End of Advices -->
+
+
+	<!-- Advisors -->
+	<bean name="methodBeforeLogAdvisor"
+		  class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedName">
+			<value>*</value>
+		</property>
+		<property name="advice">
+			<ref bean="methodBeforeLogAdvice"/>
+		</property>
+	</bean>
+
+	<bean name="methodAfterLogAdvisor"
+		  class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedName">
+			<value>*</value>
+		</property>
+		<property name="advice">
+			<ref bean="methodAfterLogAdvice"/>
+		</property>
+	</bean>
+
+	<bean name="throwsLogAdvisor"
+		  class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedName">
+			<value>*</value>
+		</property>
+		<property name="advice">
+			<ref bean="throwsLogAdvice"/>
+		</property>
+	</bean>
+
+	<!-- End of Advisors -->
+	
+	<!-- Misc -->
+	<bean id="logBeanNameProxyCreatorDao"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<value>*Dao</value>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>methodBeforeLogAdvisor</value>
+				<value>methodAfterLogAdvisor</value>
+				<value>throwsLogAdvisor</value>
+			</list>
+		</property>
+		
+	</bean>
+
+
+</beans>

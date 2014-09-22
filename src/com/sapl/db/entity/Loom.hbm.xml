@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="com.sapl.db.data.Loom" table="LOOM_TBL">
+      <meta attribute="class-description">
+         This is a Loom class
+      </meta>
+      <id name="id" type="int" column="ID">
+         <generator class="increment"/>
+      </id>
+
+	<property name="loomName" column="LOOMNAME" type="string"/>
+    
+   </class>
+</hibernate-mapping>
