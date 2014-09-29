@@ -155,18 +155,6 @@
 		<property name="userInfoService" ref="userInfoService" />
     </bean> -->
 
-	<!--
-    <bean id="searchController" class="com.sapl.webui.controller.SearchController">
-    	<property name="commandClass" value="com.sapl.webui.command.user.Person"/>
-        <property name="commandName"  value="person" />
-
-        <property name="formView" value="/secure/common/search"/>
-        <property name="searchView" value="/secure/common/search"/>
-		<property name="userInfoService" ref="userInfoService" />
-    </bean>
-	 -->
-
-
  	<!-- View Resolvers -->
 	<bean id="viewResolver"
 		  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -196,16 +184,8 @@
 		</property>
 	</bean>
 
-	<!--  Interceptors
-	<bean id="authenticationInterceptor"
-		  class="com.sapl.webui.interceptor.AuthenticationInterceptor">
-		  <property name="userInfoService" ref="userInfoService" />
-		  <property name="studentService" ref="studentService" />
-		  <property name="treeService" ref="treeService" />
-		  <property name="schoolService" ref="schoolService" />
-		  <property name="accountService" ref="accountService" />
-		  <property name="hmConnectionManager" ref="hmConnectionManager" />
-	</bean>
+	<!-- 
+	 Interceptors
 	-->
 	<bean id="authenticationInterceptor"
 		  class="com.sapl.webui.interceptor.AuthenticationInterceptor">

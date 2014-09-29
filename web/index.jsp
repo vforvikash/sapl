@@ -45,6 +45,7 @@ margin: 16px;
 					<b><font face=Arial,Helvetica size="-1">User:</font></b>
 				</td>
 				<td>
+					
 					<input tabindex=1 type='text' size="10" name='j_username' value='<sec:authentication property="name"/>'>
 				</td>
 				<td width="15px">&nbsp;</td>
@@ -80,7 +81,9 @@ margin: 16px;
 		</TR>
 	</TABLE>
 
-	<!--<h3>Properties obtained using &lt;sec:authentication /&gt; tag</h3>
+	<!--
+	http://www.mkyong.com/spring-security/spring-security-form-login-example/
+	<h3>Properties obtained using &lt;sec:authentication /&gt; tag</h3>
 	<table border="1">
 		<tr>
 			<th>Tag</th>

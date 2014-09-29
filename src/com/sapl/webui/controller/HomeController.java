@@ -11,4 +11,9 @@ public class HomeController extends MultiActionController{
 		System.out.println("Hi Vikash this is goHome() method!!!!");
 		return new ModelAndView("/hello");
 	}
+	
+	public ModelAndView index(HttpServletRequest request, HttpServletResponse response){
+		System.out.println("Hi Vikash this is to login page() method!!!!");
+		return new ModelAndView("/index");
+	}
 }
