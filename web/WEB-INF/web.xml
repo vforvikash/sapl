@@ -4,7 +4,7 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-			/WEB-INF/sapl-servlet.xml,/WEB-INF/conf/sapl-data.xml,/WEB-INF/conf/sapl-service.xml,/WEB-INF/conf/sapl-security.xml
+			/WEB-INF/sapl-servlet.xml,/WEB-INF/conf/sapl-data.xml,/WEB-INF/conf/sapl-service.xml,/WEB-INF/conf/sapl-security.xml,,/WEB-INF/conf/sapl-dwr.xml
 		</param-value>
   </context-param>
   <context-param>

@@ -7,27 +7,23 @@ import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.directwebremoting.spring.SpringCreator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import com.sapl.db.dao.SaplDaoException;
 import com.sapl.db.data.Sample;
 import com.sapl.services.user.UserInfoService;
 
-//@RemoteProxy(name="ajaxController")
-//@Service
-//@RequestMapping(value="/dwr/")
-/*@RemoteProxy(creator = SpringCreator.class,
-creatorParams = { @Param(name = "beanName", value = "saplAjaxController"), @Param(name = "javascript", value="ajaxController") })*/
-
-
 /**
 * A Java controller exposed via DWR
 */
-@RemoteProxy(
+@Controller("ajaxController")
+@RemoteProxy(name="ajaxController")
+/*@RemoteProxy(
     creator = SpringCreator.class,
-    creatorParams ={ @Param(name = "beanName", value = "saplAjaxController"), @Param(name = "javascript", value="ajaxController") }
-)
-@Service("saplAjaxController") // Spring annotation
+    creatorParams ={ @Param(name = "beanName", value = "ajaxController"), @Param(name = "javascript", value="ajaxController") }
+)*/
+// Spring annotation
 public class AjaxController {
 
 	@Autowired
@@ -39,7 +35,7 @@ public class AjaxController {
 		return "Welcome to DWR!!!";
 	}
 	
-//	@RemoteMethod
+	@RemoteMethod
 	public List<Sample> getSamples(String sId) throws SaplCntlException{
 		System.out.println("This is from client-----"+sId);
 		try {
@@ -50,7 +46,7 @@ public class AjaxController {
 		}
 	}
 	
-//	@RemoteMethod
+	@RemoteMethod
 	public List<?> getListOfDataSearched(String searchString, String dataType) throws SaplCntlException{
 		System.out.println("------> getListOfDataSearched----searchString="+searchString+", dataType="+dataType);
 		List<?> listOfData = null;

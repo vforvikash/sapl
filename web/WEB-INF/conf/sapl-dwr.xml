@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    	http://www.directwebremoting.org/schema/spring-dwr 
+    	http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd 
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+	<dwr:annotation-config id="dwrAnnotationConfig" />
+    <dwr:annotation-scan base-package="com.sapl.webui.controller" scanDataTransferObject="true" scanRemoteProxy="false" />
+
+	<dwr:controller id="dwrController" debug="true"/>
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	  <property value="true" name="alwaysUseFullPath"></property>
+	  <property name="mappings">
+	    <props>
+	      <prop key="/dwr/**/*">dwrController</prop>
+	    </props>
+	 </property>
+	</bean>
+
+	<dwr:configuration>
+	  <dwr:convert type="bean" class="com.sapl.db.data.Sample" />
+	  <dwr:convert type="bean" class="com.sapl.db.data.Type"/>
+	  <dwr:convert type="bean" class="com.sapl.db.data.GroupSize"/>
+	  <dwr:convert type="bean" class="com.sapl.db.data.ProductType"/>
+	  <dwr:convert type="bean" class="com.sapl.db.data.Group"/>
+	  <dwr:convert type="bean" class="com.sapl.db.data.Loom"/>
+	  <dwr:convert type="bean" class="com.sapl.db.data.Texture"/>
+	  <dwr:convert type="bean" class="com.sapl.db.data.Ground"/>
+	  <dwr:convert type="bean" class="com.sapl.db.data.Colour"/>
+	</dwr:configuration>
+	
+</beans>
