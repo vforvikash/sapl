@@ -13,7 +13,7 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import com.sapl.webui.command.HMCommand;
 
 /**
- * @author VasanS
+ * @author Vikash
  * This is the base Interface which performs the CRUD operation.
  * If we need to perform any other functionality apart from the CRUD operation
  * we need to write a new Dao which extends the HMDao to implement the custom functionality.

@@ -2,10 +2,15 @@ package com.sapl.webui.controller;
 
 
 /**
- * @author VasanS
+ * @author Vikash
  * The base Exception class
  */
 public class SaplCntlException extends Exception {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2108361779843932869L;
 
 	/**
 	 * @param message

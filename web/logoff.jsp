@@ -9,6 +9,6 @@
 </head>
 <body>
 <h1>logoff</h1>
-<a href='<c:url value="/public/user.login.htm"/>'> Login</a>
+<a href='<c:url value="/index.jsp"/>'> Login</a>
 </body>
 </html>

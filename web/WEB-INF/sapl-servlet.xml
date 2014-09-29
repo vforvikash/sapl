@@ -147,13 +147,13 @@
     </bean>
 
 
-	<bean id="loginController" class="com.sapl.webui.controller.LoginController">
+	<!-- <bean id="loginController" class="com.sapl.webui.controller.LoginController">
         <property name="commandClass" value="com.sapl.webui.command.LoginCommand"/>
         <property name="commandName"  value="login" />
 		<property name="formView" value="public/login"/>
 		<property name="successView" value="redirect:/secure/admin/home.htm"/>
 		<property name="userInfoService" ref="userInfoService" />
-    </bean>
+    </bean> -->
 
 	<!--
     <bean id="searchController" class="com.sapl.webui.controller.SearchController">

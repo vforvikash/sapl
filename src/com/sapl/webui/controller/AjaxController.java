@@ -2,13 +2,10 @@ package com.sapl.webui.controller;
 
 import java.util.List;
 
-import org.directwebremoting.annotations.Param;
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
-import org.directwebremoting.spring.SpringCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 
 import com.sapl.db.dao.SaplDaoException;
 import com.sapl.db.data.Sample;
@@ -19,11 +16,6 @@ import com.sapl.services.user.UserInfoService;
 */
 @Controller("ajaxController")
 @RemoteProxy(name="ajaxController")
-/*@RemoteProxy(
-    creator = SpringCreator.class,
-    creatorParams ={ @Param(name = "beanName", value = "ajaxController"), @Param(name = "javascript", value="ajaxController") }
-)*/
-// Spring annotation
 public class AjaxController {
 
 	@Autowired

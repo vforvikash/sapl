@@ -1,18 +1,14 @@
 package com.sapl.webui.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import org.springframework.validation.BindException;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.SimpleFormController;
+@Controller
+@RequestMapping("/index")
+public class LoginController /*extends SimpleFormController*/{
 
-import com.sapl.services.user.UserInfoService;
-
-public class LoginController extends SimpleFormController{
-	private UserInfoService userInfoService;
-
-	@Override
+	/*@Override
 	protected ModelAndView showForm(HttpServletRequest request,
 			HttpServletResponse response, BindException errors)
 			throws Exception {
@@ -26,14 +22,10 @@ public class LoginController extends SimpleFormController{
 			throws Exception {
 		System.out.println("This is onSubmit() method");
 		return super.onSubmit(request, response, command, errors);
+	}*/
+	@RequestMapping(value="/", method = RequestMethod.GET)
+	public void login(){
+		System.out.println("I'm trying to login....");
 	}
-
-	public UserInfoService getUserInfoService() {
-		return userInfoService;
-	}
-
-
-	public void setUserInfoService(UserInfoService userInfoService) {
-		this.userInfoService = userInfoService;
-	}
+	
 }
