@@ -24,7 +24,11 @@
 	  <property name="unit" column="UNIT" type="int"/>
 	  <property name="salesPrice" column="SALES_PRICE" type="double"/>
 	  <property name="purchasePrice" column="PURCHASE_PRICE" type="double"/>
-	  
+	  <property name="description" column="description" type="string"/>
+	  <property name="unitType" column="unitType" type="string">
+        </property>
+	  <property name="productSubType" type ="string"/>
+	  <property name="productStyle" type="char"/>
 	  
 	  <many-to-one name="type" column="TYPE_ID" class="com.sapl.db.data.Type" not-null="false" lazy="false"/>
 	  <many-to-one name="groupSize" column="GROUP_SIZE_ID" class="com.sapl.db.data.GroupSize" not-null="false" lazy="false"/>

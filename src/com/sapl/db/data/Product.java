@@ -24,7 +24,9 @@ public class Product implements Serializable{
 	private Double length;        
 	private Double width;         
 	private Double p_rate;        
-	private Double s_rate;        
+	private Double s_rate; 
+	private String description;
+	private char productStyle;
 	private int openingStock;  
 	private int closingStock;  
 	private int keepStock;     
@@ -39,7 +41,9 @@ public class Product implements Serializable{
 	private Ground ground;        
 	private Loom loom;          
 	private Colour colour;        
-	private Texture texture;       
+	private Texture texture;
+	private String productSubType="Woven";
+	private String unitType;
 	private Set<Colour> colours = new HashSet<Colour>();
 	/**
 	 * @return the id
@@ -304,6 +308,55 @@ public class Product implements Serializable{
 	 */
 	public void setColours(Set<Colour> colours) {
 		this.colours = colours;
+	}
+	
+	/**
+	 * @return the productStyle
+	 */
+	public char getProductStyle() {
+		return productStyle;
+	}
+	/**
+	 * @param productStyle the productStyle to set
+	 */
+	public void setProductStyle(char productStyle) {
+		this.productStyle = productStyle;
+	}
+	/**
+	 * @return the productSubType
+	 */
+	public String getProductSubType() {
+		return productSubType;
+	}
+	/**
+	 * @param productSubType the productSubType to set
+	 */
+	public void setProductSubType(String productSubType) {
+		this.productSubType = productSubType;
+	}
+	/**
+	 * @return the unitType
+	 */
+	public String getUnitType() {
+		return unitType;
+	}
+	/**
+	 * @param unitType the unitType to set
+	 */
+	public void setUnitType(String unitType) {
+		this.unitType = unitType;
+	}
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

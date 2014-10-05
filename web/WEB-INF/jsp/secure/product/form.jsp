@@ -169,10 +169,11 @@ function showListByCallBack(dataList) {
 <body>
 <form:form action="save.htm" commandName="product" name="createS" id="createS" method="POST">
 <form:hidden path="id" id="product_id"/>
-action=<c:out value="${action}"/>
+<!-- action=<c:out value="${action}"/>-->
 <form:errors path="*" cssClass="errorblock" element="div" />
+<h3>Product creation</h3>
 <table>
-
+<thead>Product</thead>
 		<tr>
 			<td width="15%">Name:</td>
 			<td width="35%">
@@ -196,14 +197,31 @@ action=<c:out value="${action}"/>
 			</td>
 		</tr>
 		<tr>
-			<td>P Rate:</td>
+			<%--  <td>P Rate:</td>
 			<td>
 				<form:input path="p_rate" id="product_p_rate"/>
 			</td>
 			<td>S Rate:</td>
 			<td>
 				<form:input path="s_rate" id="product_s_rate"/>
-			</td>
+			</td> --%>
+			<td>Description</td>
+			
+			<td><form:textarea cols="50" rows="10" path="description" id="product_desc"/></td>
+			<td> Horizontal <form:radiobutton path="productStyle" value="H"/></td>
+			<td>Vertical <form:radiobutton path="productStyle" value="V"/></td>
+		</tr>
+		<tr>
+		
+		<td> Woven <form:radiobutton path="productSubType" value="Woven"/></td>
+			<td>Printed <form:radiobutton path="productSubType" value="Printed"/></td>
+		<td>Unit Type: 
+			<form:select path="unitType">
+				<form:option value="">Select Unit Type</form:option>
+				<form:option value="INCH">Inch</form:option>
+				<form:option value="CENTIMETER">Centimeter</form:option>
+			</form:select>
+		</td>
 		</tr>
 		<tr>
 			<td>openingStock:</td>
