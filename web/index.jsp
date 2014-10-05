@@ -4,9 +4,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//Dtd HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript" src="/sapl/dwr/engine.js"></script>
-<script type="text/javascript" src="/sapl/dwr/util.js"></script>
-<script type="text/javascript" src="/sapl/dwr/interface/ajaxController.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SAPL construction</title>
 <script type="text/javascript">
@@ -46,7 +43,7 @@ margin: 16px;
 				</td>
 				<td>
 					
-					<input tabindex=1 type='text' size="10" name='j_username' value='<sec:authentication property="name"/>'>
+					<input tabindex=1 type='text' size="10" id='j_username' name='j_username' value='<sec:authentication property="name"/>'>
 				</td>
 				<td width="15px">&nbsp;</td>
 
@@ -54,7 +51,7 @@ margin: 16px;
 					&nbsp;<b><font face=Arial,Helvetica size="-1">Password:</font></b>
 				</td>
 				<td>
-					<input type='password'tabindex=2  name='j_password' size="10">
+					<input type='password' tabindex=2  id='j_password' name='j_password' size="10">
 				</td>
 				<td>
 					<input type="image" src="images/login.jpg" width="48" height="19" alt="Login" tabindex="3">
@@ -81,9 +78,9 @@ margin: 16px;
 		</TR>
 	</TABLE>
 
-	<!--
-	http://www.mkyong.com/spring-security/spring-security-form-login-example/
-	<h3>Properties obtained using &lt;sec:authentication /&gt; tag</h3>
+	<!-- http://www.mkyong.com/spring-security/spring-security-form-login-example/ -->
+	
+	<%-- <h3>Properties obtained using &lt;sec:authentication /&gt; tag</h3>
 	<table border="1">
 		<tr>
 			<th>Tag</th>
@@ -111,14 +108,26 @@ margin: 16px;
 				<td><sec:authentication property="principal.accountNonLocked" />
 				</td>
 			</tr>
+			<a href="<c:url value="/j_spring_security_logout" />" > Logoff</a>
 		</sec:authorize>
 	</table>
-	<br/>
-	<a href="<c:url value="/j_spring_security_logout" />" > Logoff</a>
-	--><c:if test="${not empty error}">
+	<br/> --%>
+	<script type="text/javascript">
+		var userName='<sec:authentication property="name"/>';
+		if(userName=='anonymousUser'){
+			document.getElementById("j_username").value="";
+		}
+	</script>
+	<c:if test="${not empty error}">
 		<div class="errorblock">
 		Login error : Please try again.<br />Root Cause: ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
 	</c:if>
+	<c:if test="${'fail' eq param.auth}">
+        <div style="color:red">
+                Login Failed!!!<br />
+                Reason : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+         </div>
+    </c:if>
 </body>
 </html>

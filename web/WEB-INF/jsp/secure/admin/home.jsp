@@ -7,7 +7,27 @@
 </head>
 <body>
 
-	<h1>Welcome to configuration management. Message: <c:out value="${message}"/></h1>
+	<h1>Welcome to configuration management <sec:authorize access="isAuthenticated()"><sec:authentication property="principal.username" /></sec:authorize>!!! <%-- <br/>Message: <c:out value="${message}"/> --%></h1>
+	
+	<%-- <sec:authorize access="isAuthenticated()">
+			<tr>
+				<td>&lt;sec:authentication property='principal.username' /&gt;</td>
+				<td><sec:authentication property="principal.username" />
+				</td>
+			</tr>
+			<tr>
+				<td>&lt;sec:authentication property='principal.enabled' /&gt;</td>
+				<td><sec:authentication property="principal.enabled" />
+				</td>
+			</tr>
+			<tr>
+				<td>&lt;sec:authentication
+					property='principal.accountNonLocked' /&gt;</td>
+				<td><sec:authentication property="principal.accountNonLocked" />
+				</td>
+			</tr>
+			
+		</sec:authorize> --%>
 
 </body>
 </html>
