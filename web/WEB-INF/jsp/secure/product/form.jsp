@@ -280,9 +280,13 @@ action=<c:out value="${action}"/>
 		<tr>
 			<td>colour:</td>
 			<td>
+				<%-- 
 				<form:hidden path="colour.id" id="product_colour.id"/>
 				<form:input path="colour.colourName" id="product_colour.colourName" onKeyUp="javascript:callSearchList('COLOUR')"/>
-				<div id="colourDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
+				<div id="colourDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div> --%>
+				
+				<form:select path="colours" id="product_colours.id" items="${colourList}" multiple="true" itemLabel="colourName" itemValue="id" cssStyle="width:100px;height:100px;"/>
+				
 			</td>
 			<td>texture:</td>
 			<td>

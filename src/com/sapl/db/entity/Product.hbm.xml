@@ -36,7 +36,7 @@
 	  <!-- 
 	  <many-to-one name="colour" column="COLOUR_ID" class="com.sapl.db.data.Colour" not-null="false" lazy="false"/>
 	   -->
-	  <set name="colours" table="PRODUCT_COLOUR_TBL" cascade="all-delete-orphan" inverse="false" lazy="false">
+	  <set name="colours" table="PRODUCT_COLOUR_TBL" cascade="save-update" inverse="false" lazy="false">
         <key column="PROCOL_PRODUCT_ID"/>
         <many-to-many column="PROCOL_COLOUR_ID" class="com.sapl.db.data.Colour"/>
     </set>

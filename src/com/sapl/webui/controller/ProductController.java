@@ -1,6 +1,8 @@
 package com.sapl.webui.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,19 +11,24 @@ import javax.validation.Valid;
 import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sapl.db.dao.SaplDaoException;
+import com.sapl.db.data.Colour;
 import com.sapl.db.data.Product;
+import com.sapl.services.user.ColourService;
 import com.sapl.services.user.ProductService;
 
 @Controller
@@ -33,8 +40,10 @@ public class ProductController {
     private Validator validator;
 	@Autowired
 	private ReloadableResourceBundleMessageSource validationMessages;
-
-
+	
+	@Autowired private ColourService colourService;
+	
+	Map<Integer, Colour> colourList ;
 
 	@RequestMapping(value="/secure/product/list", method = RequestMethod.GET)
 	public void list(Model model, HttpServletRequest request) throws SaplCntlException{
@@ -50,12 +59,20 @@ public class ProductController {
 	}
 
 	@RequestMapping(value="/secure/product/create", method = RequestMethod.GET)
-	public String create(@ModelAttribute("product") Product product, BindingResult bindingResult, Model model){
+	public String create(@ModelAttribute("product") Product product, BindingResult bindingResult, Model model) throws SaplDaoException{
 		System.out.println("This is create");
+		populateColourList();
 		model.addAttribute("action", "create");
-		//model.addAttribute("product", new Product());
 		return "/secure/product/form";
 	}
+
+	private void populateColourList() throws SaplDaoException {
+		colourList = new HashMap<Integer, Colour>();
+		for(Colour team : getColours()){
+            colourList.put((Integer)team.getId(), team);
+        }
+	}
+
 
 	@RequestMapping(value="/secure/product/delete", method = RequestMethod.POST)
 	public String delete(@RequestParam("objectId") String objectId, ModelMap model) throws SaplCntlException{
@@ -100,6 +117,7 @@ public class ProductController {
 			try {
 				int productId = Integer.parseInt(objectId);
 				product = productService.getProduct(productId);
+				populateColourList();
 				model.addAttribute("product", product);
 			} catch (SaplDaoException e) {
 				throw new SaplCntlException(e);
@@ -147,7 +165,24 @@ public class ProductController {
 			return "redirect:/secure/product/list.htm";
 		}
 	}
-
+	
+	@ModelAttribute("colourList")
+    public List<Colour> getColours() throws SaplDaoException{
+		return colourService.getColours();
+    }
+	
+	@InitBinder
+    protected void initBinder(WebDataBinder binder) throws Exception{
+        binder.registerCustomEditor(Set.class,"colours", new CustomCollectionEditor(Set.class){
+            protected Object convertElement(Object element){
+                if (element instanceof String) {
+                    Colour colour = colourList.get(Integer.parseInt(element.toString()));
+                    return colour;
+                }
+                return null;
+            }
+        });
+    }
 
 	public ProductService getProductService() {
 		return productService;

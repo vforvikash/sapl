@@ -23,5 +23,16 @@ public class Colour implements Serializable{
 	public void setColourName(String colourName) {
 		this.colourName = colourName;
 	}
+	
+	@Override
+	public int hashCode() {
+		return id;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return (obj!=null && obj instanceof Colour && this.getId() > 0) ? this.getId()==((Colour)obj).getId() : false;
+	}
 
 }
