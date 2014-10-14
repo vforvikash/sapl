@@ -79,31 +79,31 @@ public class DaoFactory {
 		return adminDao;*/
 		return hmdao;
 
-		/*if(cls!=null && cls.getName().equals("com.heymath.util.Tree")) {
+		/*if(cls!=null && cls.getName().equals("com.sapl.util.Tree")) {
 			TreeDao treeDao = new TreeDaoImpl(hibernateTemplate);
 			return treeDao;
-		}else if(cls!=null && cls.getName().equals("com.heymath.webui.command.school.School")) {
+		}else if(cls!=null && cls.getName().equals("com.sapl.webui.command.school.School")) {
 			SchoolDao schoolDao = new SchoolDaoImpl(hibernateTemplate);
 			return schoolDao;
 		}else if(cls!=null
-				&& ( cls.getName().equals("com.heymath.webui.command.admin.Board")
-				|| cls.getName().equals("com.heymath.webui.command.admin.Country")
-				|| cls.getName().equals("com.heymath.webui.command.message.Message")
-				|| cls.getName().equals("com.heymath.webui.command.message.MessageUsers")
-				|| cls.getName().equals("com.heymath.webui.command.message.MessageAttachments")
-				|| cls.getName().equals("com.heymath.webui.command.user.DataUpload")
-				|| cls.getName().equals("com.heymath.webui.command.admin.Grade")
-				|| cls.getName().equals("com.heymath.webui.command.admin.Role")
-				|| cls.getName().equals("com.heymath.webui.command.admin.State")
-				|| cls.getName().equals("com.heymath.webui.command.school.District")
-				|| cls.getName().equals("com.heymath.webui.command.school.Student")
-				|| cls.getName().equals("com.heymath.webui.command.school.Subject")
-				|| cls.getName().equals("com.heymath.webui.command.user.Account")
-				|| cls.getName().equals("com.heymath.webui.command.user.AccountOrganizationPerson")
-				|| cls.getName().equals("com.heymath.webui.command.user.UserInfo")
-				|| cls.getName().equals("com.heymath.webui.command.school.SchoolGradeClass")
-				|| cls.getName().equals("com.heymath.webui.command.school.SchoolGradeClassSubject")
-				|| cls.getName().equals("com.heymath.util.MailProperties"))) {
+				&& ( cls.getName().equals("com.sapl.webui.command.admin.Board")
+				|| cls.getName().equals("com.sapl.webui.command.admin.Country")
+				|| cls.getName().equals("com.sapl.webui.command.message.Message")
+				|| cls.getName().equals("com.sapl.webui.command.message.MessageUsers")
+				|| cls.getName().equals("com.sapl.webui.command.message.MessageAttachments")
+				|| cls.getName().equals("com.sapl.webui.command.user.DataUpload")
+				|| cls.getName().equals("com.sapl.webui.command.admin.Grade")
+				|| cls.getName().equals("com.sapl.webui.command.admin.Role")
+				|| cls.getName().equals("com.sapl.webui.command.admin.State")
+				|| cls.getName().equals("com.sapl.webui.command.school.District")
+				|| cls.getName().equals("com.sapl.webui.command.school.Student")
+				|| cls.getName().equals("com.sapl.webui.command.school.Subject")
+				|| cls.getName().equals("com.sapl.webui.command.user.Account")
+				|| cls.getName().equals("com.sapl.webui.command.user.AccountOrganizationPerson")
+				|| cls.getName().equals("com.sapl.webui.command.user.UserInfo")
+				|| cls.getName().equals("com.sapl.webui.command.school.SchoolGradeClass")
+				|| cls.getName().equals("com.sapl.webui.command.school.SchoolGradeClassSubject")
+				|| cls.getName().equals("com.sapl.util.MailProperties"))) {
 
 
 		}else{

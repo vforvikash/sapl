@@ -59,9 +59,9 @@ public class Constants {
 	public static final String CUSTOM_LESSON_FILEPATH="../../UploadedFiles/Lessons/";
 	
 	/**
-	 * variable to declare file path for lessons given by www.heymath.net
+	 * variable to declare file path for lessons given by www.sapl.net
 	 */
-	public static final String HEYMATH_LESSON_FILEPATH="../../WebLessons/Lessons/";
+	public static final String SAPL_LESSON_FILEPATH="../../WebLessons/Lessons/";
 	
 	/**
 	 * variable used for naming convention of file while uploading
@@ -106,32 +106,32 @@ public class Constants {
 	public static final String DELETE="DELETE";
 	
 	/**
-	 * VARIABLE DEFINED FOR THE ROLE OF HEYMATH! ADMIN
+	 * VARIABLE DEFINED FOR THE ROLE OF SAPL! ADMIN
 	 */
 	public static final String ROLE_ADMIN="ROLE_ADMIN";
 	
 	/**
-	 * VARIABLE DEFINED FOR THE ROLE OF STUDENT IN HEYMATH!
+	 * VARIABLE DEFINED FOR THE ROLE OF STUDENT IN SAPL!
 	 */
 	public static final String ROLE_STUDENT="ROLE_STUDENT";
 	
 	/**
-	 * VARIABLE DEFINED FOR THE ROLE OF TEACHER IN HEYMATH!
+	 * VARIABLE DEFINED FOR THE ROLE OF TEACHER IN SAPL!
 	 */
 	public static final String ROLE_TEACHER="ROLE_TEACHER";
 	
 	/**
-	 * VARIABLE DEFINED FOR THE ROLE OF SCHOOLADMIN IN HEYMATH!
+	 * VARIABLE DEFINED FOR THE ROLE OF SCHOOLADMIN IN SAPL!
 	 */
 	public static final String ROLE_SCHOOLADMIN="ROLE_SCHOOLADMIN";
 	
 	/**
-	 * VARIABLE DEFINED FOR THE ROLE OF DISTRICTADMIN IN HEYMATH!
+	 * VARIABLE DEFINED FOR THE ROLE OF DISTRICTADMIN IN SAPL!
 	 */
 	public static final String ROLE_DISTRICTADMIN="ROLE_DISTRICTADMIN";
 	
 	/**
-	 * VARIABLE DEFINED FOR THE ROLE OF SALES PERSON IN HEYMATH!
+	 * VARIABLE DEFINED FOR THE ROLE OF SALES PERSON IN SAPL!
 	 */
 	public static final String ROLE_SALES="ROLE_SALES";
 	
@@ -148,7 +148,7 @@ public class Constants {
 	/**
 	 * Heymath Support mail Id for sending mail 
 	 */
-	public static final String HEYMATH_SUPPORT_MAILID = "support@heymath.com<support@heymath.com>";
+	public static final String SAPL_SUPPORT_MAILID = "support@sapl.com<support@sapl.com>";
 	
 	public static final String HYEMATH_SUPPORT_FOR_MESSAGES = "HeyMath! Support";
 	
@@ -192,12 +192,12 @@ public class Constants {
 	
 	public static final String PUZ = "PUZZLE";
 	
-	public static final String MAIL_FROM_SUPPORTDESK = "Support Desk<support@heymath.com>";
+	public static final String MAIL_FROM_SUPPORTDESK = "Support Desk<support@sapl.com>";
 	
-	public static final String HEYMATH_EVAL_USER = "eval";
+	public static final String SAPL_EVAL_USER = "eval";
 	
-	public static final String MAIL_DUMMY = "nomail@heymath.com";
+	public static final String MAIL_DUMMY = "nomail@sapl.com";
 	
 	//VELOCITY TEMPLATE FILE PATH
-	public static final String VM_TEMPLATE_PATH = "com/heymath/vmproperties/";
+	public static final String VM_TEMPLATE_PATH = "com/sapl/vmproperties/";
 }

@@ -10,3 +10,35 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Eclipse Files #
+.project
+.settings/
+.classpath
+.metadata
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+*.launch
+
+# Build Files #
+target/
+bin/
+build/
+
+# Asset files #
+log/
+
+# Git Files #
+*.orig
+
+# Temporary Files #
+*.BACKUP
+*.bak
+*.OLD
+*.old

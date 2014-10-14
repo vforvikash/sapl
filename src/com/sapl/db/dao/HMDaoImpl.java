@@ -43,7 +43,7 @@ public class HMDaoImpl extends DaoImpl implements HMDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.HMDao#save(java.lang.Object)
+	 * @see com.sapl.db.dao.HMDao#save(java.lang.Object)
 	 */
 	public Object save(Object obj) throws SaplDaoException {
 		super.persistObject(obj);
@@ -55,7 +55,7 @@ public class HMDaoImpl extends DaoImpl implements HMDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.HMDao#savePersist(java.lang.Object)
+	 * @see com.sapl.db.dao.HMDao#savePersist(java.lang.Object)
 	 */
 	public Object savePersist(Object obj) throws SaplDaoException {
 		long key = super.persistObjectReturnLongId(obj);
@@ -63,7 +63,7 @@ public class HMDaoImpl extends DaoImpl implements HMDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.HMDao#getObject(java.lang.Class, java.lang.String)
+	 * @see com.sapl.db.dao.HMDao#getObject(java.lang.Class, java.lang.String)
 	 */
 	public Object getObject(Class classObj, String Id) throws SaplDaoException {
 		Object obj = super.getObject(classObj, Id);
@@ -72,14 +72,14 @@ public class HMDaoImpl extends DaoImpl implements HMDao {
 
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.HMDao#update(java.lang.Object)
+	 * @see com.sapl.db.dao.HMDao#update(java.lang.Object)
 	 */
 	public void update(Object obj) throws SaplDaoException {
 		super.updateObject(obj);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.HMDao#delete(com.heymath.webui.command.HMCommand)
+	 * @see com.sapl.db.dao.HMDao#delete(com.sapl.webui.command.HMCommand)
 	 */
 	public void delete(HMCommand hmcommand) throws SaplDaoException {
 		hmcommand.setDeleted(Constants.DELETED);
@@ -87,14 +87,14 @@ public class HMDaoImpl extends DaoImpl implements HMDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.HMDao#purge(java.lang.Object)
+	 * @see com.sapl.db.dao.HMDao#purge(java.lang.Object)
 	 */
 	public void purge(Object obj) throws SaplDaoException {
 		super.deleteObject(obj);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.DaoImpl#getAllObjects(java.lang.Class)
+	 * @see com.sapl.db.dao.DaoImpl#getAllObjects(java.lang.Class)
 	 */
 	public List getAllObjects(Class class1) throws SaplDaoException {
 		List list  = null;
@@ -109,7 +109,7 @@ public class HMDaoImpl extends DaoImpl implements HMDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.HMDao#getAllObjects(java.lang.String, java.lang.String)
+	 * @see com.sapl.db.dao.HMDao#getAllObjects(java.lang.String, java.lang.String)
 	 */
 	public List getAllObjects(String HibernateQuery,String Str) throws SaplDaoException
 	{
@@ -120,7 +120,7 @@ public class HMDaoImpl extends DaoImpl implements HMDao {
 
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.HMDao#getPagingObjects(int, int, java.lang.String, java.lang.String)
+	 * @see com.sapl.db.dao.HMDao#getPagingObjects(int, int, java.lang.String, java.lang.String)
 	 */
 	public List getPagingObjects(int startRecord, int endRecord,String hqlStatement,String orderBy) throws SaplDaoException
 	{
@@ -135,7 +135,7 @@ public class HMDaoImpl extends DaoImpl implements HMDao {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.heymath.db.dao.DaoImpl#getObject(java.lang.Class, long)
+	 * @see com.sapl.db.dao.DaoImpl#getObject(java.lang.Class, long)
 	 */
 	public Object getObject(Class classObj, long Id) throws SaplDaoException {
 		Object obj = super.getObject(classObj,Id);

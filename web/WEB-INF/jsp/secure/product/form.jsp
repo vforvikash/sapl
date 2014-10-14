@@ -171,146 +171,155 @@ function showListByCallBack(dataList) {
 <form:hidden path="id" id="product_id"/>
 <!-- action=<c:out value="${action}"/>-->
 <form:errors path="*" cssClass="errorblock" element="div" />
-<h3>Product creation</h3>
+<h3>Product <c:out value="${action}"/></h3>
 <table>
-<thead>Product</thead>
+<thead></thead>
 		<tr>
-			<td width="15%">Name:</td>
+			<td valign="top" width="15%">Name:</td>
 			<td width="35%">
 				<form:input path="name" id="product_name"/>
 			</td>
 		
-			<td width="15%">Indent House:</td>
+			<td valign="top" width="15%">Indent House:</td>
 			<td width="35%">
 				<form:checkbox path="isIndentHouse" id="product_isIndentHouse"/>
 			</td>
 		</tr>
 		<tr>
-			<td>Length:</td>
+			<td valign="top">Length:</td>
 			<td>
 				<form:input path="length" id="product_length"/>
 			</td>
 		
-			<td>Width:</td>
+			<td valign="top">Width:</td>
 			<td>
 				<form:input path="width" id="product_width"/>
 			</td>
 		</tr>
+			<%--
 		<tr>
-			<%--  <td>P Rate:</td>
+			  <td>P Rate:</td>
 			<td>
 				<form:input path="p_rate" id="product_p_rate"/>
 			</td>
 			<td>S Rate:</td>
 			<td>
 				<form:input path="s_rate" id="product_s_rate"/>
-			</td> --%>
-			<td>Description</td>
-			
-			<td><form:textarea cols="50" rows="10" path="description" id="product_desc"/></td>
-			<td> Horizontal <form:radiobutton path="productStyle" value="H"/></td>
-			<td>Vertical <form:radiobutton path="productStyle" value="V"/></td>
+			</td>
+		</tr>
+			 --%>
+		<tr>
+			<td valign="top">Description:</td>
+			<td colspan="3">
+				<form:textarea cols="50" rows="10" path="description" id="product_desc"/>
+			</td>
 		</tr>
 		<tr>
-		
-		<td> Woven <form:radiobutton path="productSubType" value="Woven"/></td>
-			<td>Printed <form:radiobutton path="productSubType" value="Printed"/></td>
-		<td>Unit Type: 
-			<form:select path="unitType">
-				<form:option value="">Select Unit Type</form:option>
-				<form:option value="INCH">Inch</form:option>
-				<form:option value="CENTIMETER">Centimeter</form:option>
-			</form:select>
-		</td>
+			<td>Horizontal: <form:radiobutton path="productStyle" value="H"/></td>
+			<td>
+				Vertical: <form:radiobutton path="productStyle" value="V"/>
+			</td>
+			<td>Unit Type:</td>
+			<td> 
+				<form:select path="unitType">
+					<form:option value="">Select Unit Type</form:option>
+					<form:option value="INCH">Inch</form:option>
+					<form:option value="CENTIMETER">Centimeter</form:option>
+				</form:select>
+			</td>
 		</tr>
 		<tr>
-			<td>openingStock:</td>
+			<td>Woven: <form:radiobutton path="productSubType" value="Woven" /></td>
+			<td>Printed: <form:radiobutton path="productSubType" value="Printed" /></td>
+		</tr>
+		<tr>
+			<td valign="top">openingStock:</td>
 			<td>
 				<form:input path="openingStock" id="product_openingStock"/>
 			</td>
-			<td>closingStock:</td>
+			<td valign="top">closingStock:</td>
 			<td>
 				<form:input path="closingStock" id="product_closingStock"/>
 			</td>
 		</tr>
 		<tr>
-			<td>keepStock:</td>
+			<td valign="top">keepStock:</td>
 			<td>
 				<form:input path="keepStock" id="product_keepStock"/>
 			</td>
-			<td>unit:</td>
+			<td valign="top">Unit:</td>
 			<td>
 				<form:input path="unit" id="product_unit"/>
 			</td>
 		</tr>
 		<tr>
-			<td>salesPrice:</td>
+			<td valign="top">salesPrice:</td>
 			<td>
 				<form:input path="salesPrice" id="product_salesPrice"/>
 			</td>
-			<td>purchasePrice:</td>
+			<td valign="top">purchasePrice:</td>
 			<td>
 				<form:input path="purchasePrice" id="product_purchasePrice"/>
 			</td>
 		</tr>
 		<tr>
-			<td>Type:</td>
+			<td valign="top">Type:</td>
 			<td>
 				<form:hidden path="type.id" id="product_type.id"/>
 				<form:input path="type.typeName" id="product_type.typeName" onKeyUp="javascript:callSearchList('TYPE');"/>
-				<div id="typeDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
+				<div id="typeDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
 			</td>
-			<td>groupSize:</td>
+			<td valign="top">groupSize:</td>
 			<td>
 				<form:hidden path="groupSize.id" id="product_groupSize.id"/>
 				<form:input path="groupSize.name" id="product_groupSize.name" onKeyUp="javascript:callSearchList('GROUPSIZE');"/>
-				<div id="groupSizeDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
+				<div id="groupSizeDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
 			</td>
 		</tr>
 		<tr>
-			<td>productType:</td>
+			<td valign="top">productType:</td>
 			<td>
 				<form:hidden path="productType.id" id="product_productType.id"/>
 				<form:input path="productType.productTypeName" id="product_productType.productTypeName" onKeyUp="javascript:callSearchList('PRODUCTTYPE')"/>
-				<div id="productTypeDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
+				<div id="productTypeDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
 			</td>
-			<td>Group:</td>
+			<td valign="top">Group:</td>
 			<td>
 				<form:hidden path="group.id" id="product_group.id"/>
 				<form:input path="group.groupName" id="product_group.groupName" onKeyUp="javascript:callSearchList('GROUP')"/>
-				<div id="groupDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
+				<div id="groupDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
 			</td>
 		</tr>
 		<tr>
-			<td>ground:</td>
+			<td valign="top">ground:</td>
 			<td>
 				<form:hidden path="ground.id" id="product_ground.id"/>
 				<form:input path="ground.groundName" id="product_ground.groundName" onKeyUp="javascript:callSearchList('GROUND')"/>
-				<div id="groundDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
+				<div id="groundDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
 			</td>
-			<td>loom:</td>
+			<td valign="top">loom:</td>
 			<td>
 				<form:hidden path="loom.id" id="product_loom.id"/>
 				<form:input path="loom.loomName" id="product_loom.loomName" onKeyUp="javascript:callSearchList('LOOM')"/>
-				<div id="loomDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
+				<div id="loomDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
 			</td>
 		</tr>
 		<tr>
-			<td>colour:</td>
+			<td valign="top">colour:</td>
 			<td>
 				<%-- 
 				<form:hidden path="colour.id" id="product_colour.id"/>
 				<form:input path="colour.colourName" id="product_colour.colourName" onKeyUp="javascript:callSearchList('COLOUR')"/>
-				<div id="colourDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div> --%>
+				<div id="colourDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div> --%>
 				
 				<form:select path="colours" id="product_colours.id" items="${colourList}" multiple="true" itemLabel="colourName" itemValue="id" cssStyle="width:100px;height:100px;"/>
 				
 			</td>
-			<td>texture:</td>
+			<td valign="top">texture:</td>
 			<td>
 				<form:hidden path="texture.id" id="product_texture.id"/>
 				<form:input path="texture.textureName" id="product_texture.textureName" onKeyUp="javascript:callSearchList('TEXTURE')"/>
-				<div id="textureDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:fixed;z-index:100;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
+				<div id="textureDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
 			</td>
 		</tr>
 	<tr>
