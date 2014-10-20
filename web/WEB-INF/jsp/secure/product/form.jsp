@@ -4,9 +4,9 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" ></script>
 
-<!-- <script type="text/javascript" src="scripts/jquery-1.8.2.js"></script> -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" ></script>
+
 <script type="text/javascript" src="/sapl/dwr/engine.js"></script>
 <script type="text/javascript" src="/sapl/dwr/util.js"></script>
 <script type="text/javascript" src="/sapl/dwr/interface/ajaxController.js"></script>
@@ -162,6 +162,7 @@ function showListByCallBack(dataList) {
 		}
 	}
 }
+
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
@@ -209,19 +210,13 @@ function showListByCallBack(dataList) {
 		</tr>
 			 --%>
 		<tr>
-			<td valign="top">Description:</td>
-			<td colspan="3">
-				<form:textarea cols="50" rows="10" path="description" id="product_desc"/>
-			</td>
-		</tr>
-		<tr>
 			<td>Horizontal: <form:radiobutton path="productStyle" value="H"/></td>
 			<td>
 				Vertical: <form:radiobutton path="productStyle" value="V"/>
 			</td>
 			<td>Unit Type:</td>
 			<td> 
-				<form:select path="unitType">
+				<form:select path="unitType" cssStyle="width:160px;">
 					<form:option value="">Select Unit Type</form:option>
 					<form:option value="INCH">Inch</form:option>
 					<form:option value="CENTIMETER">Centimeter</form:option>
@@ -229,21 +224,27 @@ function showListByCallBack(dataList) {
 			</td>
 		</tr>
 		<tr>
+			<td valign="top">Description:</td>
+			<td colspan="3">
+				<form:textarea path="description" id="product_desc" cols="80" rows="10"/>
+			</td>
+		</tr>
+		<tr>
 			<td>Woven: <form:radiobutton path="productSubType" value="Woven" /></td>
 			<td>Printed: <form:radiobutton path="productSubType" value="Printed" /></td>
 		</tr>
 		<tr>
-			<td valign="top">openingStock:</td>
+			<td valign="top">Opening Stock:</td>
 			<td>
 				<form:input path="openingStock" id="product_openingStock"/>
 			</td>
-			<td valign="top">closingStock:</td>
+			<td valign="top">Closing Stock:</td>
 			<td>
 				<form:input path="closingStock" id="product_closingStock"/>
 			</td>
 		</tr>
 		<tr>
-			<td valign="top">keepStock:</td>
+			<td valign="top">Keep Stock:</td>
 			<td>
 				<form:input path="keepStock" id="product_keepStock"/>
 			</td>
@@ -253,11 +254,11 @@ function showListByCallBack(dataList) {
 			</td>
 		</tr>
 		<tr>
-			<td valign="top">salesPrice:</td>
+			<td valign="top">Sales Price:</td>
 			<td>
 				<form:input path="salesPrice" id="product_salesPrice"/>
 			</td>
-			<td valign="top">purchasePrice:</td>
+			<td valign="top">Purchase Price:</td>
 			<td>
 				<form:input path="purchasePrice" id="product_purchasePrice"/>
 			</td>
@@ -269,7 +270,7 @@ function showListByCallBack(dataList) {
 				<form:input path="type.typeName" id="product_type.typeName" onKeyUp="javascript:callSearchList('TYPE');"/>
 				<div id="typeDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
 			</td>
-			<td valign="top">groupSize:</td>
+			<td valign="top">Group Size:</td>
 			<td>
 				<form:hidden path="groupSize.id" id="product_groupSize.id"/>
 				<form:input path="groupSize.name" id="product_groupSize.name" onKeyUp="javascript:callSearchList('GROUPSIZE');"/>
@@ -277,7 +278,7 @@ function showListByCallBack(dataList) {
 			</td>
 		</tr>
 		<tr>
-			<td valign="top">productType:</td>
+			<td valign="top">Product Type:</td>
 			<td>
 				<form:hidden path="productType.id" id="product_productType.id"/>
 				<form:input path="productType.productTypeName" id="product_productType.productTypeName" onKeyUp="javascript:callSearchList('PRODUCTTYPE')"/>
@@ -291,13 +292,13 @@ function showListByCallBack(dataList) {
 			</td>
 		</tr>
 		<tr>
-			<td valign="top">ground:</td>
+			<td valign="top">Ground:</td>
 			<td>
 				<form:hidden path="ground.id" id="product_ground.id"/>
 				<form:input path="ground.groundName" id="product_ground.groundName" onKeyUp="javascript:callSearchList('GROUND')"/>
 				<div id="groundDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div>
 			</td>
-			<td valign="top">loom:</td>
+			<td valign="top">Loom:</td>
 			<td>
 				<form:hidden path="loom.id" id="product_loom.id"/>
 				<form:input path="loom.loomName" id="product_loom.loomName" onKeyUp="javascript:callSearchList('LOOM')"/>
@@ -305,17 +306,11 @@ function showListByCallBack(dataList) {
 			</td>
 		</tr>
 		<tr>
-			<td valign="top">colour:</td>
+			<td valign="top">Colour:</td>
 			<td>
-				<%-- 
-				<form:hidden path="colour.id" id="product_colour.id"/>
-				<form:input path="colour.colourName" id="product_colour.colourName" onKeyUp="javascript:callSearchList('COLOUR')"/>
-				<div id="colourDiv" style="background-color:#aac;overflow-x:hidden;overflow-y:scroll;width:200px;height:100px;position:absolute;z-index:1;"><a href="javascript:closeAllDiv()" title="Close Me">CLOSE<a/><br/></div> --%>
-				
-				<form:select path="colours" id="product_colours.id" items="${colourList}" multiple="true" itemLabel="colourName" itemValue="id" cssStyle="width:100px;height:100px;"/>
-				
+				<form:select path="colours" id="product_colours.id" items="${colourList}" multiple="true" itemLabel="colourName" itemValue="id" cssStyle="width:160px;height:100px;"/>
 			</td>
-			<td valign="top">texture:</td>
+			<td valign="top">Texture:</td>
 			<td>
 				<form:hidden path="texture.id" id="product_texture.id"/>
 				<form:input path="texture.textureName" id="product_texture.textureName" onKeyUp="javascript:callSearchList('TEXTURE')"/>
