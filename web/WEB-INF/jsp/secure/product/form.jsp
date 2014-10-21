@@ -1,6 +1,4 @@
 <%@ include file="/WEB-INF/jsp/secure/common/include.jsp" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
@@ -18,6 +16,7 @@ $(document).ready(function(){
 		dwr.util.useLoadingMessage("Searching...");
 		ajaxController.getListOfType(typeLike, {callback:showListByCallBack});
 	});
+	
 });
 
 var ajaxCallStr = "";

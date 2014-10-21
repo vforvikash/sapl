@@ -122,7 +122,11 @@ public class ProductTypeController {
 		model.addAttribute("action", "list");
 		return "redirect:/secure/productType/list.htm";
 	}
-
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "PRODUCT_TYPE";
+    }
 
 	public ProductTypeService getProductTypeService() {
 		return productTypeService;

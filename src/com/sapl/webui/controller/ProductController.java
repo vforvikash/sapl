@@ -171,6 +171,12 @@ public class ProductController {
 		return colourService.getColours();
     }
 	
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "PRODUCT";
+    }
+	
 	@InitBinder
     protected void initBinder(WebDataBinder binder) throws Exception{
         binder.registerCustomEditor(Set.class,"colours", new CustomCollectionEditor(Set.class){

@@ -122,6 +122,11 @@ public class CustomerController {
 		model.addAttribute("action", "list");
 		return "redirect:/secure/customer/list.htm";
 	}
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "CUSTOMER";
+    }
 
 
 	public CustomerService getCustomerService() {

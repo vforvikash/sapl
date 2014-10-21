@@ -130,7 +130,11 @@ public class GroupSizeController {
 		model.addAttribute("action", "list");
 		return "redirect:/secure/groupSize/list.htm";
 	}
-
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "GROUP_SIZE";
+    }
 
 	public GroupSizeService getGroupSizeService() {
 		return groupSizeService;

@@ -122,7 +122,11 @@ public class GroupController {
 		model.addAttribute("action", "list");
 		return "redirect:/secure/group/list.htm";
 	}
-
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "GROUP";
+    }
 
 	public GroupService getGroupService() {
 		return groupService;

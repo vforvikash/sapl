@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Logout</title>
 </head>
 <body>
-<h1>logoff</h1>
-<a href='<c:url value="/index.jsp"/>'> Login</a>
+<h1>User is logged out of the system.</h1>
+To re-login. Click <a href='<c:url value="/index.jsp"/>' style="color:blue;">Login</a>.
 </body>
 </html>

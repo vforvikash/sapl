@@ -122,7 +122,11 @@ public class GroundController {
 		model.addAttribute("action", "list");
 		return "redirect:/secure/ground/list.htm";
 	}
-
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "GROUND";
+    }
 
 	public GroundService getGroundService() {
 		return groundService;

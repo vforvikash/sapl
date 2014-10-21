@@ -122,6 +122,11 @@ public class LoomController {
 		model.addAttribute("action", "list");
 		return "redirect:/secure/loom/list.htm";
 	}
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "LOOM";
+    }
 
 
 	public LoomService getLoomService() {

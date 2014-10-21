@@ -4,10 +4,10 @@
 		<a href="/sapl/"><img width="202" height="73" border="0" src="<c:url value="/images/logo.gif" />">
 		</a>
 	</div>
-	<div style="margin-left:90%;">
+	<div style="margin-left:96%;">
 	<br/>
-	<br/>
-	<a href="<c:url value="/j_spring_security_logout" />"> Logout</a></div>
+	<sec:authorize access="isAuthenticated()"><sec:authentication property="principal.username" /> is working.</sec:authorize>
+	<a href="<c:url value="/j_spring_security_logout" />" style="color:black;" title="Logout"> <INPUT TYPE="image" SRC="/sapl/images/logout.png"/></a></div>
 	<br style="clear:both;">
 	<br style="line-height:10px;">
 </div>

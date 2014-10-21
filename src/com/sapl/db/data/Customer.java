@@ -3,13 +3,17 @@ package com.sapl.db.data;
 import java.io.Serializable;
 
 public class Customer implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7807676447939090805L;
 	private int id;
 	private String name;
 	private String contactPerson;
 	private String description;
 	private String note;
 	private String address;
-	private int phone;
+	private long phone;
 
 	public int getId() {
 		return id;
@@ -53,10 +57,10 @@ public class Customer implements Serializable{
 		this.address = address;
 	}
 
-	public int getPhone() {
+	public long getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 

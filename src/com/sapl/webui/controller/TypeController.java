@@ -122,7 +122,11 @@ public class TypeController {
 		model.addAttribute("action", "list");
 		return "redirect:/secure/type/list.htm";
 	}
-
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "TYPE";
+    }
 
 	public TypeService getTypeService() {
 		return typeService;

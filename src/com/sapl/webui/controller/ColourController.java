@@ -122,6 +122,11 @@ public class ColourController {
 		model.addAttribute("action", "list");
 		return "redirect:/secure/colour/list.htm";
 	}
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "COLOUR";
+    }
 
 
 	public ColourService getColourService() {

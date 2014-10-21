@@ -6,10 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>GroupSizes</title>
-<!--
-<script type="application/javascript" src="<c:url value="/scripts/jquery-1.8.2.js"/>"></script>
--->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" ></script>
 <script type="text/javascript">
+	$(document).ready(function(){
+		$("#GroupSizeTable tr").not(':first').hover(
+		  function () {
+		    $(this).css("background","#C0C0C0");
+		  }, 
+		  function () {
+		    $(this).css("background","");
+		  }
+		);
+	});
 	function doWhat(action){
 		window.location="";
 	}

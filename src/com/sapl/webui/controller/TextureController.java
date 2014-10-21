@@ -122,6 +122,11 @@ public class TextureController {
 		model.addAttribute("action", "list");
 		return "redirect:/secure/texture/list.htm";
 	}
+	
+	@ModelAttribute("module")
+    public String getModule() {
+		return "TEXTURE";
+    }
 
 
 	public TextureService getTextureService() {
